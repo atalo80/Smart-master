@@ -29,9 +29,8 @@ import { VictoryPie, VictoryBar, VictoryGroup , VictoryChart, VictoryTheme, Vict
   const options= props.data[1];  
   const [selectedItems, setSelectedTeams] = useState([]) 
   const [dataTosand, setdataTosand] =  useState(null) 
-  const [data, setdatad] = useState([]);
-  const x= props.data[0]; 
-   const [viwe, setViwe] =  useState(x[0].name);  
+  const [data, setdatad] = useState(props.data[0]);
+   const [viwe, setViwe] =  useState(props.data[0][0].name);  
   const [selectedCategory, setSelectedCategory]  = useState(data); 
 
   const newlist = options.map((obj)=>{  
@@ -40,42 +39,22 @@ import { VictoryPie, VictoryBar, VictoryGroup , VictoryChart, VictoryTheme, Vict
     id :  obj ,
     }
 
- }) 
- useEffect(() => { 
-  
-  if(x[0]){ 
-    (x).map((item) => { 
-       let newP =[];
-     (item.problems).map((i) => {  
-      let iy=(i.twitte).sort((a, b) => (new Date(b.date) )- (new Date(a.date)));
-      console.log("uuuuuuuuuuuuuuuuuuuuuuuuuuuu",iy) 
-      newP.push(iy)
-      })  
-      setdatad(oldArray  => [...oldArray , { id: item.id , name:item.name ,twitte :item.twitte , problems:item.problems }])
-       
-         console.log("s[problemsproblemsproblemsproblems.s]",newP);  
-      }) 
-   }
- },[x])
-
+ })  
    useEffect(() => {  
     console.log("selectedItems]", selectedItems);  
     if(selectedCategory[0]!== "undefined" && selectedCategory[0] != null   )
-    {   
- 
-    console.log("filerrrrr-------------]", selectedCategory[0].problems.filter((r) => { return selectedItems.includes(r.x)})); 
-     let dateArr = ( selectedCategory[0].problems.filter((r) => { return selectedItems.includes(r.x)}) ).map((i) => {
-      console.log("11111111-----xxxxxxxxxxxx:::::::::::---------]", i.x )   
-      return  {
+    {    
+      let dateArr = ( selectedCategory[0].problems.filter((r) => { return selectedItems.includes(r.x)}) ).map((i) => {
+       return  {
         x: i.x,
         y:  i.twitte,
       }
     })  
     const ArrCoun ={}; 
     console.log("dateArr-----xxxxxxxxxxxx:::::::::::---------]", dateArr ) 
-    const fdata = dateArr.map((i)=>{  
+    dateArr.map((i)=>{  
       (i.y).forEach(element => {
-        const d = new Date(element.date);
+      const d = new Date(element.date);
       let format = Moment(d).format('YYYY/MM') 
       ArrCoun[format] = (ArrCoun[format] || 0) + 1  
     }); 
@@ -89,12 +68,9 @@ import { VictoryPie, VictoryBar, VictoryGroup , VictoryChart, VictoryTheme, Vict
     }  
   }); 
   
-  console.log("fdata:::::::::::---------]", x )  
-   setdataTosand(x) ;   
-}
-   
-else  {console.log("else]", dataTosand);  } 
-console.log("dataTosand]", dataTosand);  
+  console.log("x:::::::::::---------]", x )  
+   setdataTosand(x);   
+} 
       
    },[selectedItems]);
   
@@ -131,7 +107,7 @@ console.log("dataTosand]", dataTosand);
               style={{
                   width: 20,
                   height: 20,
-               
+                  
               }}
           />
           <Text style={{ marginLeft: SIZES.base, color: COLORS.primary, ...FONTS.h4 }}>{item.name}</Text>
@@ -193,6 +169,6 @@ console.log("dataTosand]", dataTosand);
           shadowOpacity: 0.25,
           shadowRadius: 3.84,
           elevation: 3,
-      }
+      } 
   })
 export default LineSelect

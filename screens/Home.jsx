@@ -119,7 +119,7 @@ const Home = () => {
                       return  {   
                         x:  (obj),
                         y:  re[obj].length,
-                        twitte:  re[obj],
+                        twitte:  re[obj].sort((a, b) => (new Date(a.date) )- (new Date(b.date))),
                       } 
                    })  ;
                  setSelectedTeam(Object.keys(re))  
@@ -141,7 +141,7 @@ const Home = () => {
             },[data]);
      
 
-     const [viewMode, setViewMode] = React.useState("chart");
+     const [viewMode, setViewMode] = React.useState("list");
  
     function renderHeader() {  
  
@@ -174,7 +174,7 @@ const Home = () => {
                 {/* Title   */}
                 <View >
                     <Text style={{ color: COLORS.primary, ...FONTS.h3 }}>COMPANIES</Text>
-                    <Text style={{ color: COLORS.darkgray, ...FONTS.body4 }}> {companies.length} Total</Text>{/* מספר החברות */}
+                    <Text style={{ color: COLORS.darkgray, ...FONTS.body4 }}> 2 </Text>{/* מספר החברות */}
                 </View>
 
                 {/* Buttons */}
@@ -290,7 +290,7 @@ const Home = () => {
               
                 {   viewMode == "list" &&  
                      <View>  
-                     {    
+                     {        data3[1] &&    
                           <View> 
                              <RendPie data={data3}/> 
                           </View> 

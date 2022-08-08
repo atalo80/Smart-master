@@ -107,7 +107,8 @@ function renderTwitte() {
       style={{
         flexDirection: 'row', 
         paddingHorizontal: SIZES.radius,
-        borderRadius: 10,
+        borderRadius: 1,
+        ...style.shadow
        }}
        
       
@@ -124,6 +125,10 @@ function renderTwitte() {
 ) 
 return (
   <View  > 
+      <View style={{  flexDirection: 'row',  alignItems: 'center',   justifyContent: 'center' }}> 
+        <Text  style={{ margin :5, color: COLORS.primary, ...FONTS.h1  }}>Twittes</Text>
+      </View>
+   
       <FlatList
           data={twitte}
           renderItem={renderItem}

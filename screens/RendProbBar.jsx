@@ -51,7 +51,7 @@ const RendProbBar = props => {
             margin: 5, 
             paddingVertical: SIZES.radius,
             paddingHorizontal: SIZES.padding,
-            borderRadius: 5,
+            borderRadius: 15,
             backgroundColor: COLORS.white,
             ...style.shadow,  paddingTop:20, alignItems: 'center', justifyContent: 'center' }}>
  
@@ -109,20 +109,7 @@ const RendProbBar = props => {
   }
 </VictoryGroup>
 </VictoryChart> 
-   {/* { (data != undefined) && 
-   ( data.length >0 )&&  
-    <Text> 
-       {   
-   data.problems.map((s)=>{
-    console.log("aaaaaaaaaaaaaa",s.x);   
-      return(  
-        <Text style={{ color: 'rgba(245, 215, 145, 0.8)' }} > {s.x} </Text>  
-        )
-      })   
-      
-  }
-   </Text>
-  } */}
+ 
         </View>  
   
     )}

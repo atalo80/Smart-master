@@ -3,25 +3,15 @@ import React from "react";
 import { useState, useEffect } from 'react';
 import { COLORS,   SIZES, icons   } from '../constants';
  
-import {
-    SafeAreaView,
-    StyleSheet,
-    ScrollView,
+import { 
+    StyleSheet, 
     View,
     Text,
-    StatusBar,
-    Image,
-    ImageBackground,
-    TouchableOpacity,
-    FlatList,
-    Animated,
-    Platform
+   
 } from 'react-native';
  
 import {  VictoryBar, VictoryGroup , VictoryChart, VictoryTheme, VictoryAxis } from 'victory-native';
-import { forEach } from "lodash";
-// import { Svg,Line } from 'react-native-svg'; 
-const RendBar = props => {  
+ const RendBar = props => {  
 
     const  data = props.data; 
     const [brData, setBrData] = useState([]);  
@@ -57,7 +47,7 @@ const RendBar = props => {
             margin: 5, 
             paddingVertical: SIZES.radius,
             paddingHorizontal: SIZES.padding,
-            borderRadius: 5,
+            borderRadius: 15,
             backgroundColor: COLORS.white,
             ...style.shadow,  paddingTop:20, alignItems: 'center', justifyContent: 'center' }}>
  
@@ -140,5 +130,4 @@ colorScale={type}
       }
   })
   
- 
  export default RendBar;
