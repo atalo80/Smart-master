@@ -1,23 +1,10 @@
 import React from "react"; 
-import { useState, useEffect } from 'react';
-import { COLORS,   SIZES, icons   } from '../constants';
-import Moment from 'moment';
-import {
-    SafeAreaView,
-    StyleSheet,
-    ScrollView,
-    View,
-    Text,
-    StatusBar,
-    Image,
-    ImageBackground,
-    TouchableOpacity,
-    FlatList,
-    Animated,
-    Platform
+ 
+import { 
+    StyleSheet, 
 } from 'react-native';
  
-import { VictoryLine, VictoryBar, VictoryGroup , VictoryChart, VictoryTheme, VictoryAxis } from 'victory-native';
+import { VictoryLine, VictoryChart, VictoryTheme,   } from 'victory-native';
 
 const LineChart = props => {   
   const  data = props.data  ;   
@@ -26,9 +13,7 @@ const LineChart = props => {
  
 <VictoryChart
   theme={VictoryTheme.material}
->
-   
-   
+> 
         <VictoryLine
         style={{
           data: { stroke: "#c43a31" },

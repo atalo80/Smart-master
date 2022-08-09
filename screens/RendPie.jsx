@@ -3,18 +3,14 @@ import { COLORS, FONTS, SIZES, icons   } from '../constants';
 import { useState, useEffect } from 'react';
 
  import {
-    SafeAreaView,
-    StyleSheet,
-    ScrollView,
-    View,
+     StyleSheet,
+     View,
     Text,
-    StatusBar,
+    
     Image,
-    ImageBackground,
-    TouchableOpacity,
+     TouchableOpacity,
     FlatList,
-    Animated,
-    Platform
+     Platform
 } from 'react-native';
  
 import { VictoryPie} from 'victory-native';
@@ -23,15 +19,14 @@ import { Svg} from 'react-native-svg';
 
 const RendPie= props => { 
     const data3= props.data; 
-    console.log("data3data3data3data3 ",data3.length)
-    const [selectedProblam, setselectedProblam] =  useState(null);  
+     const [selectedProblam, setselectedProblam] =  useState(null);  
     const [selectedCategory, setSelectedCategory]  = useState(data3[0]); 
     const colorScales = [COLORS.red, COLORS.darkgreen, COLORS.purple, COLORS.yellow];
     const [viwe, setViwe] =  useState(null);  
-    const [twitte, settwitte] =  useState([]);  
+    const [twitte, settwitte] =  useState([]);
+      
   function x() {
-    console.log("selectedCategory ",selectedCategory) 
-    const renderItem = ({ item }) => (  
+     const renderItem = ({ item }) => (  
         <TouchableOpacity
                 onPress={(() =>{ 
                     setSelectedCategory(item)
@@ -84,12 +79,10 @@ function processCategoryDataToDisplay() {
    var a =[];
    let total=0    
    let  problems = selectedCategory.problems
-    console.log("item[0] looooooogg",  problems)    
-    problems.map((t)  =>{ total +=  Number(t.y)})   
+     problems.map((t)  =>{ total +=  Number(t.y)})   
     total = total/100  
     a =  problems.map((t)  =>{
-        console.log("problems AA",(problems));
-         return  {
+          return  {
          color: COLORS.lightBlue,
          name: t.x,
          label: `${((t.y)/total).toFixed(0)}%`,
@@ -97,8 +90,7 @@ function processCategoryDataToDisplay() {
          twitte : (selectedCategory.twitte[t.x])
          }   
          })   
-     console.log("twitte 22222222222222",a[2].twitte);
-    return {a}
+     return {a}
 }
  
 function renderTwitte() { 
@@ -145,8 +137,7 @@ return (
 function renderExpenseSummary() {
     let data1 = (processCategoryDataToDisplay()) ; 
     data1 =data1.a 
-    console.log("renderExpenseSummary data1data1data1",data1 );  
-    let graphicColor =colorScales;
+     let graphicColor =colorScales;
     const renderItem = ({ item }) => (
      
               <TouchableOpacity
@@ -196,8 +187,7 @@ function renderExpenseSummary() {
 function renderChart() { 
     let chartData = (processCategoryDataToDisplay()); 
     chartData= chartData.a ;
-    console.log("charaa sssssssssssssss",chartData);   
-    if(Platform.OS == 'ios')
+     if(Platform.OS == 'ios')
         {
             return (
                 <View  style={{ alignItems: 'center', justifyContent: 'center' }}>
@@ -267,8 +257,7 @@ function renderChart() {
                                             target: "labels",
                                             mutation: (props) => {
                                                 let categoryName = chartData[props.index].name
-                                                console.log("categoryName",categoryName)
-                                                setselectedProblam(categoryName)
+                                                 setselectedProblam(categoryName)
                                                 let X =chartData[props.index].twitte 
                                                 settwitte(X)
                                             }

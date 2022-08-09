@@ -12,30 +12,21 @@ import LineSelect from './LineSelect';
     ScrollView,
     View,
     Text,
-    StatusBar,
+   
     Image,
-    ImageBackground,
+  
     TouchableOpacity,
-    FlatList,
-    Animated,
-    Platform
+    
 } from 'react-native';
- import { VictoryPie, VictoryBar, VictoryGroup , VictoryChart, VictoryTheme, VictoryAxis } from  'react-native';
-// import { Svg,Line } from 'react-native-svg';
+ 
  
 
 const Home = () => { 
-        const [companies, setCompanies] = useState([]); 
         const apiUr = 'http://twitter-smart-server.herokuapp.com/api/model/list'; 
         const apiUrl = 'http://twitter-smart-server.herokuapp.com/api/tweet/sentiment/' ;
         const apiUr2='http://twitter-smart-server.herokuapp.com/api/tweet/problem/'; 
       
-
-         //זה ירדנר ישר (DATA)אם נרצה להוסיף עוד סוגי טלפון פשוט צריך להוסיף למידע 
-         //לחשוב אם להוסיף תמונה של הטלפון ?
-         // // dummy data 
-          
-
+ 
           const [data, setData] = useState([]);
           const [data2, setData2] = useState([]);
           const [selectedTeam, setSelectedTeam] = useState([])
@@ -52,8 +43,7 @@ const Home = () => {
                 })
                 .then( 
                   (result) => {    
-                  console.log("data=", result);  
-                  setData(result);  
+                   setData(result);  
                    }, 
                   (error) => {
                     console.log("err post=", error);  
@@ -79,19 +69,16 @@ const Home = () => {
                              setData2(oldArray  => [...oldArray,{
                                name : i , 
                                problems : Object.keys(re).map((obj) =>{
-                                console.log("data2 ",   re[obj][4]);  
-                                   return  {   
+                                    return  {   
                                     x:  obj ,
                                     y:  re[obj].length, 
                                     color : type[obj]  ,
                                   } 
                                  }), 
                             }]); 
-                           console.log("data2 ", data2); 
-                             },
+                              },
                            (error) => {
-                             console.log("err post=", error);  
-                               }) ; 
+                                }) ; 
                       });    
             },[data]);
 
@@ -106,16 +93,13 @@ const Home = () => {
                   'Accept': 'application/json; charset=UTF-8'
                 })
               }) 
-                .then(res => { 
-                  console.log('res.ok2', res.ok); 
+                .then(res => {  
                   return  res.json(); 
                 })
                 .then(
                   (re) =>{ 
-                   console.log("wifi wifi ", re.wifi.length); 
-                  const data= Object.keys(re).map((obj) =>{
-                    console.log("Object.keys(e) ", obj  ); 
-                    console.log("re[obj].length, ",re[obj].length); 
+                   const data= Object.keys(re).map((obj) =>{
+                 
                       return  {   
                         x:  (obj),
                         y:  re[obj].length,
@@ -130,8 +114,7 @@ const Home = () => {
                       problems : data,   
                    }]);  
                    setCompanies(data3);  
-                   console.log("setCompaniessetCompaniessetCompanies", data3);  
-
+ 
                      },
                   (error) => {
                     console.log("err post=", error);  
@@ -272,10 +255,7 @@ const Home = () => {
     }
   
     return (
-        <View> 
-            {/* nav bar section
-            {rendernavbar()} */ 
-        }
+        <View>  
             {/* header section */}
             {renderHeader()}
             {/* Company header sectio */}

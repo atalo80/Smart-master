@@ -2,35 +2,23 @@
 import React from "react"; 
 import { useState, useEffect } from 'react';
 import { COLORS,   SIZES, icons   } from '../constants'; 
-import {
-    SafeAreaView,
-    StyleSheet,
-    ScrollView,
-    View,
-    Text,
-    StatusBar,
-    Image,
-    ImageBackground,
-    TouchableOpacity,
-    FlatList,
-    Animated,
-    Platform
+import { 
+    StyleSheet, 
+    View, 
 } from 'react-native';
  
 import { VictoryLabel, VictoryBar, VictoryGroup , VictoryChart, VictoryTheme, VictoryAxis } from 'victory-native';
-// import { Svg,Line } from 'react-native-svg'; 
-const RendProbBar = props => { 
+ const RendProbBar = props => { 
     const  data = props.data  ;  
     const [brData, setBrData] = useState([]);    
     const type =[COLORS.darkgray ,COLORS.gray ,COLORS.red] 
 
     useEffect(() => { 
-    if(data.length > 0 ){ 
+    if(data.length > 0){ 
       let arr =[]
       for (let i = 0; i < data[0].length; i++) {
         const y = data.map((item) => {  
-         console.log("item[item[i]item[i]]",item[i]);  
-             return {
+              return {
                x:item[i].x ,
                y:item[i].y ,
                z: item[i].z ,
@@ -40,8 +28,7 @@ const RendProbBar = props => {
         arr.push(y) 
       } 
       setBrData(arr);    
-      console.log("item   wwww  ww",arr);  
-       }
+        }
       },[data]) 
     return (
 
@@ -53,9 +40,7 @@ const RendProbBar = props => {
             paddingHorizontal: SIZES.padding,
             borderRadius: 15,
             backgroundColor: COLORS.white,
-            ...style.shadow,  paddingTop:20, alignItems: 'center', justifyContent: 'center' }}>
- 
-   
+            ...style.shadow,  paddingTop:20, alignItems: 'center', justifyContent: 'center' }}> 
          <VictoryChart  padding={{ top: 35, bottom: 30, left: 45, right: 10 }}
              colorScale={"qualitative"}
 

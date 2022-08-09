@@ -4,26 +4,16 @@ import Icon from 'react-native-vector-icons/MaterialIcons'
 import SectionedMultiSelect from 'react-native-sectioned-multi-select';
 import Moment from 'moment';
 import LineChart from './LineChart';
-import { COLORS, FONTS, SIZES, icons   } from '../constants'; 
-
- 
-import {
-    SafeAreaView,
-    StyleSheet,
-    ScrollView,
+import { COLORS, FONTS, SIZES, icons   } from '../constants';  
+import { 
+    StyleSheet, 
     View,
-    Text,
-    StatusBar,
-    Image,
-    ImageBackground,
+    Text, 
+    Image, 
     TouchableOpacity,
-    FlatList,
-    Animated,
-    Platform
-} from 'react-native';
+    FlatList, 
+} from 'react-native'; 
 
-import { VictoryPie, VictoryBar, VictoryGroup , VictoryChart, VictoryTheme, VictoryAxis } from 'victory-native';
-// import { Svg,Line } from 'react-native-svg'; 
 
   const LineSelect = props => {  
   const options= props.data[1];  
@@ -41,8 +31,7 @@ import { VictoryPie, VictoryBar, VictoryGroup , VictoryChart, VictoryTheme, Vict
 
  })  
    useEffect(() => {  
-    console.log("selectedItems]", selectedItems);  
-    if(selectedCategory[0]!== "undefined" && selectedCategory[0] != null   )
+     if(selectedCategory[0]!== "undefined" && selectedCategory[0] != null   )
     {    
       let dateArr = ( selectedCategory[0].problems.filter((r) => { return selectedItems.includes(r.x)}) ).map((i) => {
        return  {
@@ -51,8 +40,7 @@ import { VictoryPie, VictoryBar, VictoryGroup , VictoryChart, VictoryTheme, Vict
       }
     })  
     const ArrCoun ={}; 
-    console.log("dateArr-----xxxxxxxxxxxx:::::::::::---------]", dateArr ) 
-    dateArr.map((i)=>{  
+     dateArr.map((i)=>{  
       (i.y).forEach(element => {
       const d = new Date(element.date);
       let format = Moment(d).format('YYYY/MM') 
@@ -60,16 +48,14 @@ import { VictoryPie, VictoryBar, VictoryGroup , VictoryChart, VictoryTheme, Vict
     }); 
  
   })
-  console.log("ArrCoun:::::::::::---------]", ArrCoun )  
-  let  x = Object.keys(ArrCoun).map((element) => {
+   let  x = Object.keys(ArrCoun).map((element) => {
     return  {
       x:element,
       y: ArrCoun[element],
     }  
   }); 
   
-  console.log("x:::::::::::---------]", x )  
-   setdataTosand(x);   
+    setdataTosand(x);   
 } 
       
    },[selectedItems]);
@@ -81,8 +67,7 @@ import { VictoryPie, VictoryBar, VictoryGroup , VictoryChart, VictoryTheme, Vict
        setSelectedTeams(selectedItems)   
  }  
  function addBTN() {
-  console.log("selectedCategory ",selectedCategory) 
-  const renderItem = ({ item }) => (  
+   const renderItem = ({ item }) => (  
       <TouchableOpacity
               onPress={(() =>{  
                   setSelectedCategory([item])

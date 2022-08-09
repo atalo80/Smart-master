@@ -1,4 +1,4 @@
- 
+
 import React from "react"; 
 import { useState, useEffect } from 'react';
 import { COLORS,   SIZES, icons   } from '../constants';
@@ -37,8 +37,7 @@ import {  VictoryBar, VictoryGroup , VictoryChart, VictoryTheme, VictoryAxis } f
     } 
     }
      },[data])
-     console.log("s[ssss.s]",brData);     
-
+ 
     return (
  
    <View  
@@ -104,8 +103,7 @@ colorScale={type}
     <Text> 
        {   
    data[0].problems.map((s)=>{
-    console.log("aaaaaaaaaaaaaa",s.x);   
-      return(  
+       return(  
         <Text style={{ color: s.color }} > {s.x} </Text>  
         )
       })   
